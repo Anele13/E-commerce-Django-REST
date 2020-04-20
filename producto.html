@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="http://cdn.dcodes.net/2/payment_icons/dc_payment_icons.css" />
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/detalle_producto.css">
+    </head>
+    
+    <!-- Cuerpo de la pagina -->
+    <body>
+        <header>
+            <!-- NavBar de la pagina-->
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #fff;">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-md btn-dark" aria-label="Left Align">Mi compra
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-md btn-dark" aria-label="Left Align">Perfil
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="row" style="align-items: center;">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-dark" type="submit">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main role="main">
+            <div class="container-fluid">
+                <br>
+                <div class="row">
+                    <div class="col-md-6 offset-md-1 col-sm-12"> <!-- sacar el sm 12 -->
+                        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                            <div class=row>
+                                <div class="col-md-3">
+                                    <aside class="thumbnails">
+                                        <a href="#" class="selected thumbnail" data-big="img/vans.png">
+                                            <img class="img-thumbnail" src="img/vans.png" alt="Vans">
+                                        </a>
+                                        <a href="#" class="thumbnail" data-big="img/proximamente.jpg">
+                                            <img class="img-thumbnail" src="img/proximamente.jpg" alt="Vans">    
+                                        </a>
+                                        <a href="#" class="thumbnail" data-big="img/proximamente.jpg">
+                                            <img class="img-thumbnail" src="img/proximamente.jpg" alt="Vans">                                        </a>
+                                    </aside>
+                                </div>
+                                <div class="col-md-9">
+                                    <img class="img-fluid" src="img/vans.png" alt="Vans">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                            <div class="card-body">
+                                <h3 class="card-title">Zapatillas marca adidas fenomenales. Nuevas</h3>
+                                <h1 class="card-title">$ 150.000</h1>
+                                <br>
+                                <h6 class="card-title"><i class="fa fa-credit-card"></i> Paga en 12 cuotas</h6>
+                                <span class="dc_payment_icons_bevel_48 dc_visa_bevel" title="Visa"></span>
+                                <span class="dc_payment_icons_bevel_48 dc_visa02_bevel" title="Visa"></span>
+                                <span class="dc_payment_icons_bevel_48 dc_mastercard_bevel" title="Mastercard"></span>
+                                <span class="dc_payment_icons_bevel_48 dc_americanexpress_bevel" title="American Express"></span>
+                                <span class="dc_payment_icons_bevel_48 dc_americanexpress02_bevel" title="American Express"></span>
+                                <span class="dc_payment_icons_bevel_48 dc_discover_bevel" title="Discover"></span>
+                                <span class="dc_payment_icons_bevel_48 dc_dinersclub_bevel" title="Diners Club"></span>
+                                <br>
+                                <h6 class="card-title" style="color: green"><i class="fa fa-truck" aria-hidden="true"></i> Envios a todo el pais</h6>
+                            </div>
+                            <hr>
+                            <button class="btn btn-lg btn-info">
+                                    Agregar al carro <i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+                            </button>
+                            <hr>
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Descripcion
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p class="card-text">Son las mejores zaaptillas del mundo. COMPRALAS!!</p> 
+                                        </div>
+                                    </div>
+                                    <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Opiniones
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p class="card-text">Son las mejores zaaptillas del mundo. COMPRALAS!!</p> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">Garibaldi-Aranda.</span>
+            </div>
+        </footer>
+    </body>
+
+    <script>
+    $('.img-thumbnail').on('click', function() {
+        var clicked = $(this);
+        var newSelection = clicked.attr('src');
+        var $img = $('.img-fluid').attr('src',newSelection)
+        clicked.parent().find('.img-thumbnail').removeClass('selected');
+        clicked.addClass('selected');
+        $('.img-fluid').empty().append($img.hide().fadeIn('slow'));
+    });
+    </script>
+</html>
+
+
+
