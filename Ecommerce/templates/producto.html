@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extra_static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dc_payment_icons.css' %}">
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/detalle_producto.css' %}">
+{% endblock %}
+
+{% block extra_javascript %}
+    <script type="text/javascript" src="{% static 'js/get_producto.js' %}"></script>
+{% endblock %}
+
+
+{% block main %}
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="col-md-6 offset-md-1 col-sm-12"> <!-- TODO sacar el sm 12 -->
+                <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                    <div class=row>
+                        <div class="col-md-3">
+                            <aside class="thumbnails">
+                                <a href="#" class="selected thumbnail" data-big="https://thumb.pccomponentes.com/w-220-220/articles/4/42329/1.jpg">
+                                    <img class="img-thumbnail" src="https://thumb.pccomponentes.com/w-220-220/articles/4/42329/1.jpg" alt="Vans">
+                                </a>
+                                <a href="#" class="thumbnail" data-big="https://thumb.pccomponentes.com/w-220-220/articles/4/42329/1.jpg">
+                                    <img class="img-thumbnail" src="https://thumb.pccomponentes.com/w-220-220/articles/4/42329/1.jpg" alt="Vans">    
+                                </a>
+                                <a href="#" class="thumbnail" data-big="https://thumb.pccomponentes.com/w-220-220/articles/4/42329/1.jpg">
+                                    <img class="img-thumbnail" src="{% static 'img/vans.png' %}" alt="Vans">                                        </a>
+                            </aside>
+                        </div>
+                        <div class="col-md-9">
+                            <img class="img-fluid" src="https://thumb.pccomponentes.com/w-220-220/articles/4/42329/1.jpg" alt="vans">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-12">
+                <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                    <div class="card-body">
+                        <h3 class="card-title">Zapatillas marca adidas fenomenales. Nuevas</h3>
+                        <h1 class="card-title">$ 150.000</h1>
+                        <br>
+                        <h6 class="card-title"><i class="fa fa-credit-card"></i> Paga en 12 cuotas</h6>
+                        <span class="dc_payment_icons_bevel_48 dc_visa_bevel" title="Visa"></span>
+                        <span class="dc_payment_icons_bevel_48 dc_visa02_bevel" title="Visa"></span>
+                        <span class="dc_payment_icons_bevel_48 dc_mastercard_bevel" title="Mastercard"></span>
+                        <span class="dc_payment_icons_bevel_48 dc_americanexpress_bevel" title="American Express"></span>
+                        <span class="dc_payment_icons_bevel_48 dc_americanexpress02_bevel" title="American Express"></span>
+                        <span class="dc_payment_icons_bevel_48 dc_discover_bevel" title="Discover"></span>
+                        <span class="dc_payment_icons_bevel_48 dc_dinersclub_bevel" title="Diners Club"></span>
+                        <br>
+                        <h6 class="card-title" style="color: green"><i class="fa fa-truck" aria-hidden="true"></i> Envios a todo el pais</h6>
+                    </div>
+                    <hr>
+                    <button class="btn btn-lg btn-info">
+                            Agregar al carro <i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+                    </button>
+                    <hr>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Descripcion
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p class="card-text">Son las mejores zaaptillas del mundo. COMPRALAS!!</p> 
+                                </div>
+                            </div>
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Opiniones
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p class="card-text">Son las mejores zaaptillas del mundo. COMPRALAS!!</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+    <script type="text/javascript">
+        $('.img-thumbnail').on('click', function() {
+            var clicked = $(this);
+            var newSelection = clicked.attr('src');
+            var $img = $('.img-fluid').attr('src',newSelection)
+            clicked.parent().find('.img-thumbnail').removeClass('selected');
+            clicked.addClass('selected');
+            $('.img-fluid').empty().append($img.hide().fadeIn('slow'));
+        });
+    </script>
+{% endblock %}
+
+
+
+
+
