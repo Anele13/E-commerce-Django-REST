@@ -3,8 +3,8 @@ Simple e-commerce with Bootstrap, Django &amp; DjangoREST
 
 ### Para correr el servidor HTML:
 
-- Entrar a la carpeta ```Ecommerce``` para correr el server html
-  - Una vez dentro ```python manage.py makemigrations`, migrate, runserver localhost:800X```
+- Entrar a la carpeta ```ecommerce``` para correr el server html
+  - Una vez dentro ```npm install``` y luego  ```npm start```
 
 ### Para correr la API: 
 
