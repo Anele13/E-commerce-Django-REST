@@ -19,10 +19,15 @@ from producto import views
 
 router = routers.DefaultRouter()
 router.register(r'producto', views.ProductoViewSet)
+from rest_framework_jwt.views import obtain_jwt_token
+from .views import current_user, UserList
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+    path('current_user/', current_user),
+    path('users/', UserList.as_view()),
+    path('token-auth/', obtain_jwt_token),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
