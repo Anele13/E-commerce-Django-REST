@@ -15,5 +15,8 @@ Simple e-commerce with Bootstrap, Django &amp; DjangoREST
 ### Para correr la API: 
 
 - Entrar a la carpeta de ```APIREST``` para correr la api de catalogo y productos
-  - Una vez dentro ```python manage.py makemigrations`, migrate, runserver localhost:800Y```
+  - Una vez dentro ```python manage.py makemigrations```, ```migrate```, ```runserver localhost:8000```
+  - finalmente para obtener datos de la API las URLS son: 
+    - ```http://localhost:8000/producto``` ***para obtener TODOS los productos***
+    - ```http://localhost:8000/producto/1``` ***para obtener el producto con ID=1***
   
