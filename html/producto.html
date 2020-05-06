@@ -1,6 +1,10 @@
 <html>
     <meta charset="utf-8">    
     <head>
+            <!-- General a todo el proyecto-->
+            <script type="text/javascript" src="js/ecommerce.js"></script>
+
+
             <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
             <script type="text/javascript" src="js/popper.min.js"></script>
             <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -10,7 +14,8 @@
             <!-- SOLO para producto-->
             <link rel="stylesheet" type="text/css" href="http://cdn.dcodes.net/2/payment_icons/dc_payment_icons.css" />
             <link rel="stylesheet" type="text/css"  href="css/detalle_producto.css">
-            <script type="text/javascript" src="js/get_producto.js"></script>
+            <script type="text/javascript" src="js/producto.js"></script>
+            
 
     </head>
     <body>
@@ -63,8 +68,9 @@
                     <div class="col-md-4 col-sm-12">
                         <div class="card shadow-sm p-3 mb-5 bg-white rounded">
                             <div class="card-body">
-                                <h3 class="card-title">Zapatillas marca adidas fenomenales. Nuevas</h3>
-                                <h1 class="card-title">$ 150.000</h1>
+                                <div id="id_producto" style="display:none"></div>
+                                <h3 class="card-title" id="card_nombre"></h3>
+                                <h1 class="card-title" id="card_precio"></h1>
                                 <br>
                                 <h6 class="card-title"><i class="fa fa-credit-card"></i> Paga en 12 cuotas</h6>
                                 <span class="dc_payment_icons_bevel_48 dc_visa_bevel" title="Visa"></span>
@@ -78,7 +84,7 @@
                                 <h6 class="card-title" style="color: green"><i class="fa fa-truck" aria-hidden="true"></i> Envios a todo el pais</h6>
                             </div>
                             <hr>
-                            <button class="btn btn-lg btn-info">
+                            <button class="btn btn-lg btn-info" id="btn_agregar_a_carro" onclick="agregarEliminarProducto()">
                                     Agregar al carro <i class="fa fa-shopping-cart" aria-hidden="true"></i> 
                             </button>
                             <hr>
@@ -93,7 +99,7 @@
                                     </div>
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p class="card-text">Son las mejores zaaptillas del mundo. COMPRALAS!!</p> 
+                                            <p class="card-text" id="id_descripcion"></p> 
                                         </div>
                                     </div>
                                     <div class="card-header" id="headingTwo">
@@ -105,7 +111,7 @@
                                     </div>
                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p class="card-text">Son las mejores zaaptillas del mundo. COMPRALAS!!</p> 
+                                            <p class="card-text"></p> 
                                         </div>
                                     </div>
                                 </div>

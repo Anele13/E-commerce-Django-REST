@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+        <title>Login</title>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- General a todo el proyecto-->
+        <script type="text/javascript" src="js/ecommerce.js"></script>
+        <link rel="stylesheet" type="text/css"  href="css/detalle_producto.css"> <!-- TODO: sacar esto. mover estilos generales-->
+        <link href="css/login.css" rel="stylesheet">
+  </head>
+ 
+  <div class="container-fluid">
+    <div id="form_errors"></div>
+    <body class="text-center">
+        <main>
+            <div class="form-signin">
+                <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+                <h1 class="h3 mb-3 font-weight-normal">Por favor ingrese</h1>
+                <label for="inputUsername" class="sr-only">Usuario</label>
+                <input type="username" id="inputUsername" class="form-control" placeholder="Usuario" required autofocus>
+                <label for="inputPassword" class="sr-only">Contraseña</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+                <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Recordarme
+                </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" onclick="login()">Login</button>
+                <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+            </div>
+        </main>
+    </body>
+  </div>
+
+</html>
