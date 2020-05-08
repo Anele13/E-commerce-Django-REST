@@ -1,7 +1,7 @@
 
 
 $(document).ready(function() {
-    getProducto(3) //TODO: no harcoding aca!
+    getProducto(9) //TODO: no harcoding aca!
 });
 
 function getProducto(idProducto){
@@ -32,5 +32,8 @@ function agregarEliminarProducto(){
             eliminarDelCarro(idProducto)
             $('#btn_agregar_a_carro').html("Agregar al carro <i class='fa fa-shopping-cart' aria-hidden='true'></i>");
         }
+    }
+    else{
+        window.location.href = localhost+"/login.html?nextPage=producto.html";
     }
 }

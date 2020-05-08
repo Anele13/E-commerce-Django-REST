@@ -20,7 +20,7 @@ $(document).ready(function() {
 
     }
     else{
-        window.location.href = localhost+'/index.html';
+        window.location.href = '/login.html?nextPage=carrito.html';   
     }
 });
 
@@ -49,6 +49,6 @@ function crearItem(producto){
 }
 
 function error(mensaje){
-    $('#container_compra').hide()
+    $('#container_compra').parent().hide()
     $('#main_container').append("<div class='alert alert-danger  text-center' role='alert'>"+ mensaje+"</div>")
 }
