@@ -40,7 +40,7 @@ function crearItem(producto){
                                             "<h4 class='card-title' id='card_nombre'>"+producto.nombre+"</h4>"+
                                             "<h6 class='card-title' style='color: green'><i class='fa fa-truck' aria-hidden='true'></i> <strong>Envio Gratis</strong></h6>"+
                                         "</div>"+
-                                        "<div class='col-md-2 text-center'>"+
+                                        "<div class='col-md-2 col-sm-12 text-center'>"+
                                             "<div class='input-group mb-3'>"+
                                                "<div class='input-group-prepend '>"+
                                                     "<button class='btn btn-outline-secondary' type='button' onClick='restarProducto(this)'>-</button>"+
@@ -52,7 +52,7 @@ function crearItem(producto){
                                             "</div>"+
                                             "<p class='cant_restante'>"+producto.cantidad_disponible+" unidades</p>"+
                                         "</div>"+
-                                        "<div class='col-md-2'>"+
+                                        "<div class='col-md-2 col-sm-12'>"+
                                             "<a class='btn btn-outline-secondary' href='"+localhost+'/producto.html?id='+producto.id+"'>Ver</a>"+
                                             "<button style='margin-left: 3px' class='btn btn-outline-danger' onClick='eliminarProducto("+producto.id+")'>Eliminar</button>"+
                                         "</div>"+
