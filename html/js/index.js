@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+  switchBotonLogin();
   mostrar(0,30);
   $('#b1').on('click', function() {
     buscar(0,30);
@@ -130,3 +131,14 @@ function filtrar(productos,query){
     }
   })
 }
+
+//Para el spinner mientras espera resultados
+$( document ).ajaxStart(function() {
+  $('#loading').show(); 
+  $('#cont').hide()
+});
+
+$( document ).ajaxStop(function() {
+  $('#loading').hide();  
+  $('#cont').show() 
+});
