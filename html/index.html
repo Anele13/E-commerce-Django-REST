@@ -11,6 +11,11 @@
         <link rel="stylesheet" href="css/index.css">
         <script type="text/javascript" src="js/index.js"></script>
         <link rel="stylesheet" type="text/css"  href="css/ecommerce.css">
+        <!-- Rating -->
+        <script type="text/javascript" src="js/jquery-ui.js"></script>
+        <script src="js/jquery.start.rating.svg.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/jquery.star.svg.css">
+        <link rel="stylesheet" type="text/css"  href="css/jquery-ui.css">
     </head>
     <body>
         <header>
@@ -25,10 +30,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="d-inline-block">
-                                
-                                <input class=" " id="buscar" type="search" placeholder="Search" aria-label="Search">
+                                <input class="buscador" id="buscar" type="search" placeholder="Encontra productos" aria-label="Search">
                                 <button class="btn btn-dark" id="b1" >Buscar</button> 
-                            
                                 <button type="button" class="btn btn-outline-dark" onClick="window.location.href='carrito.html'">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i> Mi compra
                                 </button>
@@ -45,23 +48,57 @@
                 <br>     
                 <div class="row">
                     <div class="col-sm-3 offset-1 d-none d-lg-block ">
-                    <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action" id="b3">Telefonos</a>
-                        <a href="#" class="list-group-item list-group-item-action" id="b4">Smart Tv</a>
-                        <a href="#" class="list-group-item list-group-item-action" id="b5">Tablets</a>
-                        <a href="#" class="list-group-item list-group-item-action" id="b6">Notebooks</a>
-                    </div>
+
+
+
+
+
+                            <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-8">                    
+                                            <div class="list-group">
+                                                <h3>Precio</h3>
+                                                <input type="hidden" id="hidden_minimum_price" value="1" />
+                                                <input type="hidden" id="hidden_maximum_price" value="6000" />
+                                                <p id="price_show">1000 - 65000</p>
+                                                <div id="price_range"></div>
+                                            </div>
+                                            <br>
+                                            <div class="list-group">
+                                                <h3>Ranking</h3>
+                                                <div style="height: 40px; overflow-y: auto; overflow-x: hidden;">
+                                                    <div class="container">
+                                                        <input type="hidden" id="hidden_default_rating" value="0" />
+                                                        <div class="my-rating"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="list-group">
+                                                <h3>Categ. Principales</h3>
+                                                <div class="list-group list-group-flush border">   
+                                                    <a href="#" class="list-group-item list-group-item-action" id="b3">Telefonos</a>
+                                                    <a href="#" class="list-group-item list-group-item-action" id="b4">Smart Tv</a>
+                                                    <a href="#" class="list-group-item list-group-item-action" id="b5">Tablets</a>
+                                                    <a href="#" class="list-group-item list-group-item-action" id="b6">Notebooks</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+
+                        
+                        
                     </div>
                     <div class="col-sm-8">
                         <div class="d-flex justify-content-center" >
-                            <div class="spinner-border" role="status" id="loading">
+                            <div class="spinner-border" role="status" id="loading" style="width: 4rem; height: 4rem;">
                                 <span class="sr-only">Loading...</span>
                             </div>
                         </div>
                         <div class="container" id="cont"> 
                         </div> 
                     </div>
-            </div>
+                </div>
         </main>
         <footer class="footer">
             <div class="container">
