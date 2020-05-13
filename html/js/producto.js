@@ -1,23 +1,38 @@
 
 
 $(document).ready(function() {
-    getProducto(9) //TODO: no harcoding aca!
+    switchBotonLogin();
+    var param = getUrlParameter('idProducto');
+    param? getProducto(param) : getProducto(1) //generico
 });
 
 function getProducto(idProducto){
     $.ajax({
         url: direccionAPI + '/producto/'+idProducto,
         success: function(producto) {
-            $('#card_nombre').html(producto.nombre)
-            $('#card_precio').html(producto.precio)
-            $('#id_producto').text(producto.id)
-            if (productoEnCarro(idProducto.toString())){
+            $('#card_nombre').html(producto[0].nombre)
+            $('#card_precio').html('$ '+producto[0].precio)
+            $('#id_producto').text(producto[0].id)
+            $('#img_principal').attr('src',producto[0].thumbnail)
+            $('#id_descripcion').html(producto[0].descripcion)
+            $('#thumbnail-1').attr('src',producto[0].thumbnail)
+            crearRating(producto[0].ranking);
+            if (productoEnCarro(producto[0].id.toString())){
                 $('#btn_agregar_a_carro').html("Eliminar del carro <i class='fa fa-shopping-cart' aria-hidden='true'></i>");
             }
         },
         error: function() {
             console.log("Hay errores");
         }
+    });
+}
+
+function crearRating(puntaje){
+    $(".my-rating").starRating({
+        starSize: 23,
+        ratedColor: 'gold',
+        initialRating: puntaje,
+        readOnly : true,
     });
 }
 
@@ -37,3 +52,4 @@ function agregarEliminarProducto(){
         window.location.href = localhost+"/login.html?nextPage=producto.html";
     }
 }
+

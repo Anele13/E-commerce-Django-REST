@@ -15,15 +15,31 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 }
 
+function hashCode(s) {
+    for(var i = 0, h = 0; i < s.length; i++)
+        h = Math.imul(31, h) + s.charCodeAt(i) | 0;
+    return h;
+}
+
+function usuarioHabilitado(username, password){
+    var usuarios_hash = [-442404218,2045108616] //usuario1:usuario1--usuario2:usuario2
+    var hash_in = hashCode(username+password)
+    return usuarios_hash.includes(hash_in)?  true: false
+}
 
 function login(){
     $('#form_errors').html(" ")
     var username = $('#inputUsername').val()
     var password = $('#inputPassword').val()
     var URLredirect = getUrlParameter('nextPage');
-    if (username){ //TODO: usuario habilitado
+    if (usuarioHabilitado(username, password)){ 
         sessionStorage.setItem('token', "1234");
-        window.location.href = localhost+'/'+URLredirect;
+        if (URLredirect){
+            window.location.href = localhost+'/'+URLredirect;
+        }
+        else{
+            window.location.href = 'index.html';
+        }
     }
     else{
         $('#form_errors').append("<div class='alert alert-danger  text-center' role='alert'>Usuario o Contraseña incorrectos. Reintente!</div>")
@@ -34,6 +50,16 @@ function login(){
 function logout(){
     sessionStorage.removeItem('token')
     sessionStorage.removeItem('carro')
+    sessionStorage.removeItem('compra')
+    $('#container_login').html(
+        "<button type='button' class='btn btn-outline-dark' onClick='redirectLogin()'>"+
+            "<i class='fa fa-user' aria-hidden='true'></i> Login"+
+        "</button>"
+    )   
+}
+
+function getUserToken(){
+    return sessionStorage.getItem('token')
 }
 
 function userIsLogged(){
@@ -81,8 +107,37 @@ function dropFromStorage(name, data){
             sessionStorage.removeItem(name)
         }
         else{
-            old.indexOf(data)!==-1? old.pop(data): old
+            old.indexOf(data)!==-1? old.splice(old.indexOf(data), 1): old
             sessionStorage.setItem(name, old);
         }
     }
+}
+
+function switchBotonLogin(){
+    $('#container_login').html('')
+    if (userIsLogged()){
+        $('#container_login').html(
+            "<button type='button' class='btn btn-outline-dark' onClick='logout()'>"+
+                "<i class='fa fa-user' aria-hidden='true'></i> Logout"+
+            "</button>"
+        )
+    }
+    else{
+        $('#container_login').html(
+            "<button type='button' class='btn btn-outline-dark' onClick='redirectLogin()'>"+
+                "<i class='fa fa-user' aria-hidden='true'></i> Login"+
+            "</button>"
+        )   
+    }
+}
+
+function redirectLogin(){
+    window.location.href = localhost+"/login.html";
+}
+
+function registrarCompra(datosCompra){
+    var token = getUserToken();
+    var compra = {}
+    compra[token] = datosCompra
+    sessionStorage.setItem('compra',JSON.stringify(compra))
 }

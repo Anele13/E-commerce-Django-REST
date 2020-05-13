@@ -13,3 +13,4 @@ class Producto(models.Model):
     imagen3 = models.CharField(max_length=500, blank=True, null=True)
     forma_envio = models.CharField(max_length=100, blank=True, null=True)
     categoria = models.CharField(max_length=500, blank=True, null=True)
+    cantidad_disponible = models.IntegerField(blank=True, null=True)
