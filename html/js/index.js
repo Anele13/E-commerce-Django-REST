@@ -1,52 +1,58 @@
 
 $(document).ready(function() {
   switchBotonLogin();
-  mostrar(0,30);
+  masProductos(0,30);
   $('#b1').on('click', function() {
-    buscar(0,30);
+    filter_data(0,30);
     return false;
   });
+
   $('#b2').on('click', function() {
     return false;
   });
+
   $('#b3').on('click', function() {
     $('#buscar').val("phone");
-    buscar(0,30);
+    filter_data(0,30);
     $('#buscar').val("");
     return false;
   });
+
   $('#b4').on('click', function() {
     $('#buscar').val("led");
-    buscar(0,30);
+    filter_data(0,30);
     $('#buscar').val("");
     return false;
   });
+
   $('#b5').on('click', function() {
     $('#buscar').val("tablet");
-    buscar(0,30);
+    filter_data(0,30);
     $('#buscar').val("");
     return false;
   });
+
   $('#b6').on('click', function() {
     $('#buscar').val("laptop");
-    buscar(0,30);
+    filter_data(0,30);
     $('#buscar').val("");
     return false;
   });
+
   $('#price_range').slider({
     range:true,
     min:1,
     max:6000,
     values:[1, 6000],
     step:50,
-    stop:function(event, ui)
-    {
+    stop:function(event, ui){
         $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
         $('#hidden_minimum_price').val(ui.values[0]);
         $('#hidden_maximum_price').val(ui.values[1]);
-        filter_data();
+        filter_data(0,30);
     }
   });
+
   $(".my-rating").starRating({
     starSize: 23,
     disableAfterRate: false,
@@ -54,14 +60,14 @@ $(document).ready(function() {
     forceRoundUp: true,
     callback: function(currentRating, $el){
         $('#hidden_default_rating').val(currentRating)
-        filter_data();
+        filter_data(0,30);
     }
   });
 });
 
-function mostrar(inicio,fin){
-  var sig='<button type="button" class="btn btn-link float-right" onclick="mostrar('+inicio+'+'+30+',' +fin+'+'+30+')">Siguiente</button>'
-  var ant='<button type="button" class="btn btn-link float-left" onclick="mostrar('+inicio+'-'+30+',' +fin+'-'+30+')">Anterior</button>';
+function masProductos(inicio,fin){
+  var sig='<button type="button" class="btn btn-link float-right" onclick="masProductos('+inicio+'+'+30+',' +fin+'+'+30+')">Siguiente</button>'
+  var ant='<button type="button" class="btn btn-link float-left" onclick="masProductos('+inicio+'-'+30+',' +fin+'-'+30+')">Anterior</button>';
   $.ajax({
     url: direccionAPI+ '/producto/',
     success: function(productos) {
@@ -87,24 +93,11 @@ function redirigir(idProducto){
   window.location.href = localhost+'/producto.html?id='+idProducto;
 }
 
-function buscar(inicio,fin){
-  console.log(inicio,fin)
-  var query=$('#buscar').val();
-  $.ajax({
-    url: direccionAPI+ '/producto/',
-    success: function(productos) {
-      var result=filtrar(productos,query);
-      putProductosEnPantalla(result,inicio,fin)
-    },
-    error: function() {
-        console.log("Hay errores");
-    }   
-  });
-}
+
 
 function putProductosEnPantalla(result,inicio,fin){
-  var sig='<button type="button" class="btn btn-link float-right" onclick="buscar('+inicio+'+'+30+','+fin+'+'+30+')">Siguiente</button>' ;
-  var ant='<button type="button" class="btn btn-link float-left" onclick="buscar('+inicio+'-'+30+',' +fin+'-'+30+')">Anterior</button>'; 
+  var sig='<button type="button" class="btn btn-link float-right" onclick="filter_data('+inicio+'+'+30+','+fin+'+'+30+')">Siguiente</button>' ;
+  var ant='<button type="button" class="btn btn-link float-left" onclick="filter_data('+inicio+'-'+30+',' +fin+'-'+30+')">Anterior</button>'; 
   if(result.length!=0){
     var p=getCol(result,inicio,fin);
     if(result.length>30){
@@ -135,7 +128,7 @@ function getCol(productos, inicio,fin){
         break;
       }
       p+='<div class="col-sm-3" onclick="redirigir('+productos[i].id+')">'
-      +'<div class="card shadow-sm p-3 mb-5 bg-white rounded" >'
+      +'<div class="card shadow-sm p-3 mb-5 bg-white rounded zoom" >'
       +'<img class="card-img" src="'+productos[i].imagen1+'">'
       +'<div class="card-body">'+'<h5 class="card-title">$ '+productos[i].precio+'</h5>';
       if(productos[i].forma_envio!=null){
@@ -174,23 +167,26 @@ $( document ).ajaxStop(function() {
 });
 
 //nuevos filtros
-
-function filter_data(){
-    var action = 'fetch_data';
+function filter_data(inicio,fin){
     var minimum_price = $('#hidden_minimum_price').val();
     var maximum_price = $('#hidden_maximum_price').val();
     var rating = $('#hidden_default_rating').val();
     var tipo = get_filter();
+    var categoria = $('#buscar').val();
     $.ajax({
-        url:"http://localhost:8001/producto",
+        url: direccionAPI+"/producto/",
         data:{  minimum_price:minimum_price,
                 maximum_price:maximum_price,
                 rating: rating,
                 tipo:tipo},
         success:function(data){
-            //$('.filter_data').html(data);
-            console.log(data)
-            putProductosEnPantalla(data,0,30)
+            if(categoria == ''){
+              putProductosEnPantalla(data,inicio,fin)
+            }
+            else{
+              var result=filtrar(data,categoria);
+              putProductosEnPantalla(result,inicio,fin)
+            }
         }
     });
 }
@@ -204,7 +200,7 @@ function get_filter(class_name){
 }
 
 $('.common_selector').click(function(){
-    filter_data();
+    filter_data(0,30);
 });
 
 

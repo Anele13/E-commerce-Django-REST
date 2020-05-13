@@ -53,7 +53,7 @@ function crearItem(producto){
                                             "<p class='cant_restante'>"+producto.cantidad_disponible+" unidades</p>"+
                                         "</div>"+
                                         "<div class='col-md-2'>"+
-                                            "<a class='btn btn-outline-secondary' href='"+localhost+'/producto.html?idProducto='+producto.id+"'>Ver</a>"+
+                                            "<a class='btn btn-outline-secondary' href='"+localhost+'/producto.html?id='+producto.id+"'>Ver</a>"+
                                             "<button style='margin-left: 3px' class='btn btn-outline-danger' onClick='eliminarProducto("+producto.id+")'>Eliminar</button>"+
                                         "</div>"+
                                         "<div class='col-md-2'>"+
