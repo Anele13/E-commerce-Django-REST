@@ -1,12 +1,13 @@
 
 
 $(document).ready(function() {
-    getProducto(9) //TODO: no harcoding aca!
+    var id = getUrlParameter('id');
+    getProducto(id) //TODO: no harcoding aca!
 });
 
 function getProducto(idProducto){
     $.ajax({
-        url: direccionAPI + '/producto/'+idProducto,
+        url: direccionAPI+ '/producto/'+idProducto,
         success: function(producto) {
             $('#card_nombre').html(producto.nombre)
             $('#card_precio').html(producto.precio)
