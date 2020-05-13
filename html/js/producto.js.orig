@@ -1,14 +1,19 @@
 
 
 $(document).ready(function() {
+<<<<<<< HEAD
     switchBotonLogin();
-    var param = getUrlParameter('id');
+    var param = getUrlParameter('idProducto');
     param? getProducto(param) : getProducto(1) //generico
+=======
+    var id = getUrlParameter('id');
+    getProducto(id) //TODO: no harcoding aca!
+>>>>>>> bc60866c500ffd2bd74854bb35c5c6c477bfecb4
 });
 
 function getProducto(idProducto){
     $.ajax({
-        url: direccionAPI + '/producto/'+idProducto,
+        url: direccionAPI+ '/producto/'+idProducto,
         success: function(producto) {
             $('#card_nombre').html(producto[0].nombre)
             $('#card_precio').html('$ '+producto[0].precio)
@@ -52,3 +57,4 @@ function agregarEliminarProducto(){
         window.location.href = localhost+"/login.html?nextPage=producto.html";
     }
 }
+
