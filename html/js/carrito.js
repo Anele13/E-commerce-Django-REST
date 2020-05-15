@@ -20,7 +20,6 @@ $(document).ready(function() {
         else{
             error("Todavia no tenes agregados productos a tu carrito!");
         }
-
     }
     else{
         window.location.href = '/login.html?nextPage=carrito.html';   
@@ -81,16 +80,12 @@ function error(mensaje){
     $('#main_container').append("<div class='alert alert-danger  text-center' role='alert'>"+ mensaje+"</div>")
 }
 
+
 function eliminarProducto(idProducto){
     eliminarDelCarro(idProducto)
     location.reload();
 }
 
-function getCantidad(idProducto){
-    //dado un producto devuelve la cantidad de
-    //ese producto en la base
-    return 2
-}
 
 function sumarProducto(boton){
     var cant_restante = Number((/(\d+)/.exec( $(boton).parents().eq(3).find('.cant_restante').html() ) || []).pop()) 
@@ -103,6 +98,7 @@ function sumarProducto(boton){
         calcularMontoFinal();
     }    
 }
+
 
 function restarProducto(boton){
     var cant_restante = Number((/(\d+)/.exec( $(boton).parents().eq(3).find('.cant_restante').html() ) || []).pop()) 
@@ -126,4 +122,6 @@ function realizarCompra(){
         datosCompra[id_producto] = cantidad
     });
     registrarCompra(datosCompra);
+    alert("Compra Exitosa! Felicitaciones!")
+    window.location.href = localhost;
 }

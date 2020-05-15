@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
     switchBotonLogin();
     var param = getUrlParameter('id');
@@ -49,6 +47,10 @@ function agregarEliminarProducto(){
         }
     }
     else{
-        window.location.href = localhost+"/login.html?nextPage=producto.html";
+        var param = getUrlParameter('id');
+        if (param)
+            window.location.href = localhost+"/login.html?nextPage=producto.html?id="+param;
+        else
+            window.location.href = localhost+"/login.html?nextPage=producto.html";
     }
 }

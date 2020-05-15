@@ -3,7 +3,7 @@ var direccionAPI = "http://localhost:8001"
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
+        sURLVariables = sPageURL.split('?'),
         sParameterName,
         i;
 
@@ -32,10 +32,16 @@ function login(){
     var username = $('#inputUsername').val()
     var password = $('#inputPassword').val()
     var URLredirect = getUrlParameter('nextPage');
+    var idProducto = getUrlParameter('id');
     if (usuarioHabilitado(username, password)){ 
         sessionStorage.setItem('token', "1234");
         if (URLredirect){
-            window.location.href = localhost+'/'+URLredirect;
+            if (URLredirect.includes('producto.html')){
+                window.location.href = localhost+'/'+URLredirect+'?id='+idProducto
+            }
+            else{
+                window.location.href = localhost+'/'+URLredirect;
+            }
         }
         else{
             window.location.href = 'index.html';
